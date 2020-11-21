@@ -1,0 +1,31 @@
+<section class="status">
+  <div class="container mx-auto">
+    <div class="status-box w-full lg:w-2/3 mx-auto">
+      <div class="flex items-center justify-between mb-12 flex-wrap">
+        <h1 class="text-2xl font-bold">Track delivery status</h1>
+        <p class="bg-white py-1 px-4 rounded-full text-green-600"><%= order._id %></p>
+      </div>
+      <ul style="margin-left: 84px;">
+        <li class="status-line text-sm md:text-lg lg:text-xl pb-16 relative" data-status="placed"><span
+            class="relative pl-4">Order
+            Placed</span></li>
+        <li class="status-line text-sm md:text-lg lg:text-xl pb-16 relative" data-status="confirmed"><span
+            class="relative pl-4">Confirmed by
+            Owner</span>
+        </li>
+        <li class="status-line text-sm md:text-lg lg:text-xl pb-16 relative" data-status="prepared"><span
+            class="relative pl-4">Preparing your
+            Meal</span></li>
+        <li class="status-line text-sm md:text-lg lg:text-xl pb-16 relative" data-status="delivered"><span
+            class="relative pl-4">Out for
+            Delivery</span></li>
+        <li class="status-line text-sm md:text-lg lg:text-xl relative" data-status="completed"><span
+            class="relative pl-4">Order
+            Completed</span></li>
+      </ul>
+    </div>
+  </div>
+  <input id="order-provider" type="hidden" readonly value="<%= JSON.stringify(order) %>">
+</section>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/users/status.js"></script>

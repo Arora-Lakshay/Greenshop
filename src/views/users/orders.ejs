@@ -1,0 +1,50 @@
+<section class="orders light-section mb-6">
+  <div class="container mx-auto pt-12">
+    <h1 class="font-bold text-lg mb-4">All Orders</h1>
+    <% if(messages.success){ %>
+    <div id="success-alert" class="flex items-center bg-green-500 text-white text-sm font-bold px-4 py-3 relative"
+      role="alert">
+      <svg style="fill:#155724;" xmlns="http://www.w3.org/2000/svg" class="font-bold text-2xl" width="16" height="16"
+        viewBox="0 0 8 8">
+        <path d="M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72
+          3.5-3.5.72-.72-1.44-1.41z" transform="translate(0 1)" />
+      </svg>
+      <p class="flex-1 ml-2">Order placed Successfully</p>
+    </div>
+    <% } %>
+    <table class="w-full table-auto bg-white">
+      <thead>
+        <tr>
+          <th class="px-4 py-2 text-left">Orders</th>
+          <th class="px-4 py-2 text-left">Phone Number</th>
+          <th class="px-4 py-2 text-left">Address</th>
+          <th class="px-4 py-2 text-left">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(orders.length){ %>
+        <% orders.map(order => { %>
+        <tr>
+          <td class="border px-4 py-2"><a class="link" href="/orders/<%= order._id %>"><%= order._id %></a></td>
+          <td class="border px-4 py-2"><%= order.contact %></td>
+          <td class="border px-4 py-2"><%= order.address %></td>
+          <td class="border px-4 py-2"><%= moment(order.createdAt).format('DD/MM/YY hh:mm A') %></td>
+        </tr>
+        <% }) %>
+        <% } else { %>
+        <tr>
+          <td colspan="4"><span class="text-blue-500 p-4">No orders yet</span></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</section>
+<script>
+  const alertBox = document.getElementById('success-alert');
+  if (alertBox) {
+    setTimeout(() => {
+      alertBox.remove();
+    }, 2000);
+  }
+</script>

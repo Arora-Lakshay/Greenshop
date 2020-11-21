@@ -1,0 +1,544 @@
+@import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
+
+body {
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: $dark;
+}
+
+button:focus, input:focus {
+  outline-width: 0;
+}
+
+input:-internal-autofill-selected {
+  background-color: rgba(84, 105, 212, 0.3) !important;
+}
+
+nav li:last-child a {
+  background-color: $primary;
+  &:hover{
+    background-color: $primary-hover;
+  }
+}
+
+nav .hamburger {
+  background-color: transparent;
+  border: 0;
+  color: $primary;
+  font-size: 24px;
+  display: none;
+  transition: $smooth;
+  &:hover {
+    color: $primary-hover;
+  }
+  &:focus {
+    outline-width: 0;
+  }
+}
+
+nav li a {
+  transition: $smooth;
+  cursor: pointer;
+  &:hover{
+    color: $primary;
+  }
+}
+
+section.hero {
+  background-color: $secondary;
+}
+
+.btn-primary {
+  background-color: $primary;
+  transition: $smooth;
+  &:hover {
+    background-color: $primary-hover;
+  }
+}
+
+.pizza-size {
+  background-color: $secondary;
+}
+
+.add-to-cart{
+  border: 2px solid $primary;
+  color: $primary;
+  transition: $smooth;
+  &:hover{
+    background-color: $primary;
+    border-color: $pure;
+    color: $pure;
+  }
+}
+
+section.cart {
+  background-color: $secondary;
+  .ammount { 
+    color: $primary;
+  }
+}
+
+.login {
+  background-color: $secondary;
+  min-height: 100%;
+  a {
+    color: $primary;
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+}
+
+#contact + .validation {
+  transition: $smooth;
+  padding-right: 30px;
+}
+
+#contact:invalid+.validation:after {
+  position: absolute; content: '✖';
+  padding-left: 5px;
+  color: $error;
+}
+
+#contact:valid+.validation:after {
+  position: absolute;
+  content: '✓';
+  padding-left: 5px;
+  color: $success;
+}
+
+.noty_theme__mint {
+  border-radius: 50px !important;
+  padding: 0px 8px !important;
+}
+
+a.link {
+  color: rebeccapurple;
+}
+
+section.status {
+  background-color: $secondary;
+  min-height: calc(100vh - 160px);
+  padding-bottom: 50px;
+  
+  .status-box {
+    padding: 60px 0 0;
+  }
+
+  .status-box ul li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -6px;
+    width: 2px;
+    height: 100%;
+    background-color: $dark;
+    margin-top: 10px;
+  }
+
+  .status-box ul li small {
+    float: right;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .status-box ul li span::before {
+    font-family: "Line Awesome Free";
+    font-size: 46px;
+    font-weight: 600;
+    position: absolute;
+    left: -90px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: inherit;
+  }
+
+  .status-box ul li span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    background: $dark;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 1px 10px $secondary;
+  }
+  
+  .status-box ul li:nth-child(1) span::before {
+    content: '\f46c';
+  }
+  .status-box ul li:nth-child(2) span::before {
+    content: '\f560';
+  }
+  .status-box ul li:nth-child(3) span::before {
+    content: '\f818';
+  }
+  .status-box ul li:nth-child(4) span::before {
+    content: '\f0d1';
+  }
+  .status-box ul li:nth-child(5) span::before {
+    content: '\f582';
+  }
+  .status-box ul li:nth-child(5) span::after {
+    box-shadow: 0 20px 1px 20px $secondary;
+  }
+
+  .status-box ul li.completed::before {
+    background-color: $gray;
+  }
+  .status-box ul li.completed span::after {
+    background-color: $gray;
+  }
+  .status-box ul li.completed span {
+    color: $gray;
+  }
+
+  .status-box ul li.current span {
+    color: $primary;
+  }
+  .status-box ul li.current span::after {
+    background-color: $primary;
+  }
+
+
+}
+
+footer {
+  padding-top: 50px;
+}
+
+// Error Page
+section.error-page {
+  margin-top: 275px;
+  height: 200px;
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -400px;
+  }
+  .message-box {
+    height: 200px;
+    width: 380px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: 50px;
+    color: $primary;
+    font-family: Lato, sans-serif;
+    font-weight: 300;
+  }
+  .message-box h1 {
+    font-size: 60px;
+    line-height: 46px;
+    margin-bottom: 40px;
+  }
+  .buttons-con .action-link-wrap {
+    margin-top: 40px;
+  }
+  .buttons-con .action-link-wrap a {
+    background: $primary;
+    padding: 8px 25px;
+    border-radius: 4px;
+    color: $pure;
+    font-weight: bold;
+    font-size: 14px;
+    transition: $smooth;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+    &:hover {
+      background: $primary-hover;
+    }
+  }
+
+  
+  #Polygon-1 , #Polygon-2 , #Polygon-3 , #Polygon-4 , #Polygon-4, #Polygon-5 {
+    animation: float 1s infinite ease-in-out alternate;
+  }
+  #Polygon-2 {
+    animation-delay: .2s; 
+  }
+  #Polygon-3 {
+    animation-delay: .4s; 
+  }
+  #Polygon-4 {
+    animation-delay: .6s; 
+  }
+  #Polygon-5 {
+    animation-delay: .8s; 
+  }
+  
+  @keyframes float {
+    100% {
+      transform: translateY(20px);
+    }
+  }
+  @media (max-width: 450px) {
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -250px;
+      margin-left: -190px;
+    }
+    .message-box {
+      top: 50%;
+      left: 50%;
+      margin-top: -100px;
+      margin-left: -190px;
+      text-align: center;
+    }
+  }
+}
+
+// Checkout Page...
+.checkout {
+  background-color: $secondary;
+
+  .ammount { 
+    color: $primary;
+  }
+
+  section.orders-section {
+    max-height: 1000px;
+    height: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $primary;
+  }
+
+  section.payments-section {
+    // box-shadow: -1px 1px 0px rgba(50, 50, 93, 0.15);
+    border-left: 1px solid rgba(50, 50, 93, 0.15);
+    width: 40vw;
+    overflow-y: auto;
+
+    form {
+      height: 100%;
+      width: 100%;
+      align-self: center;
+      padding: 40px;
+      border-radius: 0px;
+      p{
+        color: rgb(89, 111, 214);
+      }
+    }
+    input {
+      border-radius: 6px;
+      margin-bottom: 6px;
+      padding: 12px;
+      border: 1px solid rgba(50, 50, 93, 0.1);
+      height: 44px;
+      font-size: 16px;
+      width: 100%;
+      color: rgb(105, 115, 134);
+    }
+    .result-message {
+      line-height: 22px;
+      font-size: 16px;
+    }
+    .result-message a {
+      color: $success;//rgb(89, 111, 214)
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .hidden {
+      display: none;
+    }
+    #card-error {
+      color: $error;//rgb(105, 115, 134);
+      text-align: left;
+      font-size: 13px;
+      line-height: 17px;
+      margin-top: 12px;
+    }
+    #card-element {
+      border-radius: 4px 4px;
+      padding: 12px;
+      border: 1px solid rgba(50, 50, 93, 0.1);
+      height: 44px;
+      width: 100%;
+      background: white;
+      margin-top: 12px;
+    }
+    #payment-request-button {
+      margin-bottom: 32px;
+    }
+    /* Buttons and links */
+    button {
+      background: #5469d4;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      border-radius: 4px;
+      border: 0;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: block;
+      transition: all 0.2s ease;
+      box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+      width: 100%;
+      margin-top: 12px;
+    }
+    button:hover {
+      filter: contrast(115%);
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    /* spinner/processing state, errors */
+    .spinner,
+    .spinner:before,
+    .spinner:after {
+      border-radius: 50%;
+    }
+    .spinner {
+      color: #ffffff;
+      font-size: 22px;
+      text-indent: -99999px;
+      margin: 0px auto;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      box-shadow: inset 0 0 0 2px;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    .spinner:before,
+    .spinner:after {
+      position: absolute;
+      content: "";
+    }
+    .spinner:before {
+      width: 10.4px;
+      height: 20.4px;
+      background: #5469d4;
+      border-radius: 20.4px 0 0 20.4px;
+      top: -0.2px;
+      left: -0.2px;
+      -webkit-transform-origin: 10.4px 10.2px;
+      transform-origin: 10.4px 10.2px;
+      -webkit-animation: loading 2s infinite ease 1.5s;
+      animation: loading 2s infinite ease 1.5s;
+    }
+    .spinner:after {
+      width: 10.4px;
+      height: 10.2px;
+      background: #5469d4;
+      border-radius: 0 10.2px 10.2px 0;
+      top: -0.1px;
+      left: 10.2px;
+      -webkit-transform-origin: 0px 10.2px;
+      transform-origin: 0px 10.2px;
+      -webkit-animation: loading 2s infinite ease;
+      animation: loading 2s infinite ease;
+    }
+    @-webkit-keyframes loading {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes loading {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  @media(max-width: 1024px) {
+    section.payments-section {
+      width: 50vw;
+    }
+  }
+  @media(max-width: 600px) {
+    section.orders-section {
+      max-height: 400px;
+      padding: 20px;
+    }
+    section.payments-section {
+      // margin-top: 10px;
+      width: 100vw;
+      box-shadow: none;
+      form {
+        padding: 20px;
+      }
+    }
+  }
+}
+
+@media(max-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+
+  table{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media(max-width: 768px) {
+  nav #nav-ul.show {
+    display: flex;
+    ul{
+      width: 100%;
+      flex-direction: column;
+      margin-top: 10px;
+      border-top: 1px solid rgb(233, 233, 233);
+      li {
+        padding-top: 10px;
+      }
+    }
+  }
+
+  nav #nav-ul {
+    display: none;
+    width: 100%;
+  }
+
+  nav .hamburger {
+    display:  block;
+  }
+
+  .status-box ul li span:before {
+    font-size: 34px !important;
+  }
+}
+
+@media(max-width: 576px) {
+  .status-box div h1, .status-box div p{
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto 20px auto;
+
+  }
+}

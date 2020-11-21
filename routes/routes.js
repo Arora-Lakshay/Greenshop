@@ -1,0 +1,31 @@
+const express = require('express');
+const router = express.Router();
+const { home, error } = require('../app/http/controllers/homeController');
+const { cart, updateCart, increaseQty, decreaseQty, removeItem } = require('../app/http/controllers/users/cartController');
+const { login, register, createUser, loginUser, logOut } = require('../app/http/controllers/authController');
+const { checkAuthenticated, checkNotAuthenticated, verifyAdmin } = require('../app/http/middlewares/checkAuthentication');
+const { orders, placeOrder, status } = require('../app/http/controllers/users/orderController');
+const { createPaymentIntent, checkout } = require('../app/http/controllers/paymentController');
+const { admin } = require('../app/http/controllers/admin/admin');
+
+router.get('/', home);
+router.get('/cart', cart);
+router.get('/cart/inc/:id', increaseQty);
+router.get('/cart/dec/:id', decreaseQty);
+router.get('/cart/del/:id', removeItem);
+router.get('/register', checkNotAuthenticated, register);
+router.post('/register', checkNotAuthenticated, createUser);
+router.get('/login', checkNotAuthenticated, login);
+router.post('/login', checkNotAuthenticated, loginUser);
+router.post('/logout', checkAuthenticated, logOut);
+router.post('/update-cart', updateCart);
+router.post('/orders', checkAuthenticated, placeOrder);
+router.get('/orders', checkAuthenticated, orders);
+router.get('/orders/:id', checkAuthenticated, status);
+router.get('/checkout', checkAuthenticated, checkout);
+router.get('/admin/orders', verifyAdmin, admin.orders);
+router.post('/admin/order/status', verifyAdmin, admin.status);
+router.post('/create-payment-intent', checkAuthenticated, createPaymentIntent);
+router.get('*', error);
+
+module.exports = router;

@@ -1,0 +1,79 @@
+<script src="https://js.stripe.com/v3/"></script>
+<section class="checkout flex flex-wrap">
+  <section class="orders-section flex-1 py-8">
+    <div class="order container mx-auto lg:w-2/5 xl:w-1/2">
+      <div class="flex items-center border-b border-gray-300 pb-4">
+        <img src="/img/cart-black.png">
+        <h2 class="font-bold ml-4 text-2xl">Order Summary</h2>
+      </div>
+      <div class="order-list">
+        <% for(let pizza of Object.values(session.cart.items)){ %>
+        <div class="flex items-center my-8">
+          <img class="w-12 md:w-24" src="/img/<%= pizza.item.image %>" alt="item-thumbnail">
+          <div class="flex-1 ml-4">
+            <p><%= pizza.item.name %></p>
+            <span style="color: rebeccapurple;"><%= pizza.item.size %></span>
+          </div>
+          <span class="flex-1 sm:text-center"><%= pizza.qty %> Pcs</span>
+          <span class="font-bold text-lg">₹<%= pizza.item.price * pizza.qty %></span>
+        </div>
+        <% } %>
+      </div>
+      <hr>
+      <div class="text-right py-4">
+        <div>
+          <span class="text-lg font-bold">Total Amount : </span>
+          <span class="ammount text-2xl font-bold ml-2">₹<%= session.cart.totalPrice %></span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="payments-section">
+    <form id="payment-form">
+      <p class="my-8 text-center text-lg font-bold">Enter your Shipping Address details</p>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" value="<%= user.email %>" disabled required />
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" minlength="12" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          placeholder="XXX-XXX-XXXX" required />
+      </div>
+      <div>
+        <label for="address">Address</label>
+        <input type="text" id="address" placeholder="Amphetheatre Parkway" required />
+      </div>
+      <div>
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="San Fransisco" required />
+      </div>
+      <div>
+        <label for="state">State</label>
+        <input type="text" id="state" placeholder="CA" required />
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <input type="text" id="country" placeholder="USA" required />
+      </div>
+      <p class="my-8 text-center text-lg font-bold">Enter your Card Details</p>
+      <div>
+        <label for="name">Card Holder Name</label>
+        <input type="text" id="name" placeholder="John Doe" value="<%= user.name %>" required />
+      </div>
+      <div id="card-element">
+        <!--Stripe.js injects the Card Element-->
+      </div>
+      <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay Now</span>
+      </button>
+      <p id="card-error" role="alert"></p>
+    </form>
+    <form class="hidden" id="redirect-orders" action="/orders" method="POST">
+      <input type="hidden" id="order-address" name="address" required>
+      <input type="hidden" id="order-contact" name="contact" required>
+    </form>
+    <script src="/js/checkout.js" defer></script>
+  </section>
+</section>
