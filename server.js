@@ -29,7 +29,7 @@ app.set('event', event);
 
 // Session Configurations...
 app.use(session({
-  secret: "this is a secret" || process.env.COOKIE_SECRET,
+  secret: process.env.COOKIE_SECRET,
   resave: false,
   rolling: false,
   saveUninitialized: false,

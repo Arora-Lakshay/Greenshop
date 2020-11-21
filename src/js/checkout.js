@@ -2,7 +2,7 @@ import axios from 'axios';
 import Noty from 'noty';
 
 // Setting-up a client to make a payment...
-const stripe = Stripe("pk_test_51HQBzsCcQwpTTZ9VkTIlh1dWNzxoxz0fkaV1od3A49eKkHT17PFBSjDHtBOnqDwz67YfSYCFjOhUlio5wqES8Ibo00NENuqhlW");
+const stripe = Stripe("pk_test_52hjmdVFRc78vJkgGbuiKctyrhGJ5FH");
 
 document.querySelector('button').disabled = true;
 
@@ -32,42 +32,6 @@ const payWithCard = function (stripe, card, clientSecret) {
       showError(result.error.message);
     } else {
       // The payment succeeded!
-      // const result = paymentIntent : {
-      //   amount: 110000,
-      //   canceled_at: null,
-      //   cancellation_reason: null,
-      //   capture_method: "automatic",
-      //   client_secret: "pi_1Hf0F7CcQwpTTZ9V0UGzdYl7_secret_xdZvSoeZ73r5WvI4g7ts6w6yL",
-      //   confirmation_method: "automatic",
-      //   created: 1603359477,
-      //   currency: "inr",
-      //   description: null,
-      //   id: "pi_1Hf0F7CcQwpTTZ9V0UGzdYl7",
-      //   last_payment_error: null,
-      //   livemode: false,
-      //   next_action: null,
-      //   object: "payment_intent",
-      //   payment_method: "pm_1Hf0FhCcQwpTTZ9V2obPhhbe",
-      //   payment_method_types: ["card"],
-      //   receipt_email: "john@xyz.com",
-      //   setup_future_usage: null,
-      //   shipping: {
-      //     address: {
-      //       city: "San Francisco",
-      //       country: "USA",
-      //       line1: "Park Avenue",
-      //       line2: null,
-      //       postal_code: null,
-      //       state: "CA"
-      //     },
-      //     carrier: null,
-      //     name: "John Fish",
-      //     phone: "016-123-5816",
-      //     tracking_number: null
-      //   },
-      //   source: null,
-      //   status: "succeeded"
-      // }
       orderComplete(result.paymentIntent.shipping, result.paymentIntent.amount);
     }
   });
@@ -145,5 +109,3 @@ axios.post('/create-payment-intent').then(res => {
     payWithCard(stripe, card, res.data.clientSecret);
   });
 });
-
-
