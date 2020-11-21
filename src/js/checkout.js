@@ -2,7 +2,7 @@ import axios from 'axios';
 import Noty from 'noty';
 
 // Setting-up a client to make a payment...
-const stripe = Stripe("pk_test_52hjmdVFRc78vJkgGbuiKctyrhGJ5FH");
+const stripe = Stripe("pk_test_52hjmdVFRc7vJkgGbuiKctyrhGJ5FH");
 
 document.querySelector('button').disabled = true;
 

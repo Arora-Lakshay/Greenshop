@@ -9,6 +9,7 @@ const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 const passportInit = require('./app/config/passport');
 
+// Creating an Express app...
 const app = express();
 
 // Set Template Engine...
